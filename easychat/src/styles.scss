@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+@import "./styles/variables.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//FONT CLASSES
+.op-s {
+  font-family: "Open Sans", sans-seri;
+}
+.gluten {
+  font-family: "Gluten", cursive;
+}
+
+//COLOR CLASSES
+.purple {
+  color: var(--purple);
+}
+.aqua {
+  color: var(--aqua);
+}
+.yellow {
+  color: var(--yellow);
+}
+.green {
+  color: var(--green);
+}

@@ -1,0 +1,46 @@
+.navbar {
+  padding: 1rem 1.5rem;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+  a {
+    color: var(--purple);
+  }
+  ul {
+    gap: 2rem;
+  }
+}
+
+//Modal Style
+.modal-header {
+  background-color: var(--purple);
+  color: white;
+  font-family: "Gluten", cursive;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.2rem;
+}
+
+.modal-body {
+  background: url(../../../assets/imgs/watermark.png);
+  background-color: rgba($color: #fff, $alpha: 0.5);
+  background-blend-mode: overlay;
+}
+
+.modal-footer {
+  justify-content: center;
+}
+
+.btn-close {
+  background: url(../../../assets/logos/close-x.png);
+  background-size: contain;
+}
+
+.btn-info {
+  color: var(--grey);
+}
