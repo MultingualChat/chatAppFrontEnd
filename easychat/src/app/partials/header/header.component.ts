@@ -1,6 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { catchError, take, throwError } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,16 +19,44 @@ export class HeaderComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder) {}
+  constructor(
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
-  onLogin(data: any) {}
+  onLogin(data: any) {
+    console.log('Hola');
+    this.submittedForm = true;
+    if (this.loginForm.invalid) {
+      alert('Please, complete all the required fields before submitting.');
+      return;
+    }
+    this.authService
+      .login(data.email, data.password)
+      .pipe(
+        take(1),
+        catchError((err: HttpErrorResponse) => {
+          alert(
+            'Error:' + err.status + '\nInvalid submission, please try again.'
+          );
+          return throwError(() => err);
+        })
+      )
+      .subscribe((user) => {
+        if (this.authService.isAuthenticated()) {
+          this.router.navigateByUrl('/profile');
+        }
+      });
+  }
 
   open(content: any) {
     this.modalService

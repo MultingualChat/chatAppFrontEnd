@@ -66,22 +66,22 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
       <h4 class="op-s aqua" style="align-self: center">LogIn</h4>
       <div class="form-group col-lg-12">
-        <label class="op-s">Username</label>
+        <label class="op-s">Email</label>
         <input
           type="text"
-          formControlName="username"
+          formControlName="email"
           [ngClass]="{
-            'is-invalid': submittedForm && loginForm.controls.username.errors
+            'is-invalid': submittedForm && loginForm.controls.email.errors
           }"
           class="form-control"
-          placeholder="Username"
+          placeholder="email@example.com"
         />
       </div>
       <div class="form-group col-lg-12">
         <label class="op-s">Password</label>
         <input
           type="password"
-          formControlName="lastName"
+          formControlName="password"
           [ngClass]="{
             'is-invalid': submittedForm && loginForm.controls.password.errors
           }"
@@ -98,7 +98,7 @@
     <button
       type="submit"
       class="btn btn-info"
-      (click)="modal.close('Save click')"
+      (click)="onLogin(loginForm.value)"
     >
       Login
     </button>
