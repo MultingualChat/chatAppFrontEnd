@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit {
       )
       .subscribe((user) => {
         if (this.authService.isAuthenticated()) {
+          this.modalService.dismissAll();
           this.router.navigateByUrl('/profile');
         }
       });
