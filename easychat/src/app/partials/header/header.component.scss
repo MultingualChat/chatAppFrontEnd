@@ -44,3 +44,10 @@ form {
 .btn-info {
   color: var(--grey);
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20%;
+}

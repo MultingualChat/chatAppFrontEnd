@@ -43,8 +43,11 @@
           <a
             class="nav-link"
             [routerLink]="'.'"
-            (click)="isMenuCollapsed = true; open(content)"
-            >Login</a
+            (click)="
+              isMenuCollapsed = true;
+              isAuthenticated ? onLogout() : open(content)
+            "
+            >{{ isAuthenticated ? "Logout" : "Login" }}</a
           >
         </li>
       </ul>
@@ -63,7 +66,14 @@
     ></button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+    <div class="spinner" *ngIf="isLoading">
+      <mat-spinner [diameter]="70"></mat-spinner>
+    </div>
+    <form
+      *ngIf="!isLoading"
+      [formGroup]="loginForm"
+      (ngSubmit)="onLogin(loginForm.value)"
+    >
       <h4 class="op-s aqua" style="align-self: center">LogIn</h4>
       <div class="form-group col-lg-12">
         <label class="op-s">Email</label>
@@ -99,6 +109,7 @@
       type="submit"
       class="btn btn-info"
       (click)="onLogin(loginForm.value)"
+      [disabled]="isLoading"
     >
       Login
     </button>

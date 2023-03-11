@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   loginForm!: FormGroup;
   submittedForm: boolean = false;
 
+  isLoading: boolean = false;
   closeResult = '';
 
   constructor(
@@ -33,9 +34,17 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
+
   onLogin(data: any) {
-    console.log('Hola');
     this.submittedForm = true;
+    this.isLoading = true;
     if (this.loginForm.invalid) {
       alert('Please, complete all the required fields before submitting.');
       return;
@@ -48,12 +57,15 @@ export class HeaderComponent implements OnInit {
           alert(
             'Error:' + err.status + '\nInvalid submission, please try again.'
           );
+          this.modalService.dismissAll();
+          this.isLoading = false;
           return throwError(() => err);
         })
       )
       .subscribe((user) => {
         if (this.authService.isAuthenticated()) {
           this.modalService.dismissAll();
+          this.isLoading = false;
           this.router.navigateByUrl('/profile');
         }
       });
