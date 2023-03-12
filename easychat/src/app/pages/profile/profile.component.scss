@@ -1,0 +1,60 @@
+.content-wrapper {
+  width: 100%;
+  padding: 2% 5%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  background-image: url(../../../assets/imgs/background-world.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba($color: #fff, $alpha: 0.8);
+  background-position-y: -68px;
+  background-blend-mode: overlay;
+
+  hr {
+    width: 100%;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.profile-title {
+  width: 100%;
+  justify-content: space-around;
+  fa-icon {
+    cursor: pointer;
+  }
+  .no-edit {
+    color: var(--gray);
+  }
+  .edit {
+    color: var(--yellow);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  //width: 100%;
+  //justify-content: space-around;
+  min-width: 500px;
+  gap: 2rem;
+  label {
+    width: 35%;
+  }
+  .dir-row {
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  button {
+    align-self: center;
+    max-width: 100px;
+  }
+}
