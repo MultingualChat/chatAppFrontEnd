@@ -11,17 +11,28 @@ html,
 body {
   height: 100%;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+//DIRECTIOn
+.dir-col {
+  display: flex;
+  flex-direction: column;
+}
+.dir-row {
+  display: flex;
+  flex-direction: row;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 //FONT CLASSES
 .op-s {
-  font-family: "Open Sans", sans-seri;
+  font-family: "Open Sans", sans-serif !important;
 }
 .gluten {
-  font-family: "Gluten", cursive;
+  font-family: "Gluten", cursive !important;
 }
 
 //COLOR CLASSES
@@ -36,4 +47,7 @@ body {
 }
 .green {
   color: var(--green);
+}
+.gray {
+  color: var(--gray);
 }

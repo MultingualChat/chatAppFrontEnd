@@ -1,1 +1,77 @@
-<p>profile works!</p>
+<section class="content-wrapper">
+  <div class="center dir-col" style="margin-top: 68px">
+    <h1 class="op-s purple gluten"><b>Join Chat</b></h1>
+    <p class="op-s">
+      Join people around the world. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+    </p>
+  </div>
+  <button class="btn btn-info gray" (click)="onChat()">
+    <b>Chat Room</b>
+  </button>
+  <hr />
+  <div class="profile-title dir-row">
+    <h1 class="op-s purple gluten"><b>Profile</b></h1>
+    <fa-icon
+      [icon]="edit"
+      size="2x"
+      [ngClass]="isEditing ? 'edit' : 'no-edit'"
+      (click)="isEditing = isEditing ? false : true; onEdit()"
+    ></fa-icon>
+  </div>
+  <form
+    *ngIf="!isLoading"
+    [formGroup]="profileForm"
+    (ngSubmit)="onUpdateProfile(profileForm.value)"
+  >
+    <div class="form-group col-lg-12 dir-row">
+      <label class="op-s">Email: </label>
+      <input
+        type="text"
+        class="form-control"
+        [placeholder]="user.email"
+        disabled
+      />
+    </div>
+    <div class="form-group col-lg-12 dir-row">
+      <label class="op-s">Nickname: </label>
+      <input
+        type="text"
+        formControlName="nickname"
+        [ngClass]="{
+          'is-invalid': submittedForm && profileForm.controls.nickname.errors
+        }"
+        class="form-control"
+        [ngModel]="user.nickname"
+      />
+    </div>
+    <div class="form-group col-lg-12 dir-row">
+      <label class="op-s">Avatar: </label>
+      <input
+        type="text"
+        formControlName="avatar"
+        [ngClass]="{
+          'is-invalid': submittedForm && profileForm.controls.avatar.errors
+        }"
+        class="form-control"
+        [ngModel]="user.avatar"
+      />
+    </div>
+    <div class="form-group col-lg-12 dir-row">
+      <label class="op-s">Language: </label>
+      <input
+        type="text"
+        formControlName="language"
+        [ngClass]="{
+          'is-invalid': submittedForm && profileForm.controls.language.errors
+        }"
+        class="form-control"
+        [ngModel]="user.language"
+      />
+    </div>
+    <button type="submit" class="btn btn-warning gray" [hidden]="!isEditing">
+      <b>Update</b>
+    </button>
+  </form>
+</section>
