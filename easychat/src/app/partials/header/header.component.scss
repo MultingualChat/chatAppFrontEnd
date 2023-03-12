@@ -1,10 +1,19 @@
 .navbar {
+  z-index: 9;
   padding: 1rem 1.5rem;
-  background-color: rgba($color: #fff, $alpha: 0.5) !important;
+  box-shadow: 1px 1px 7px grey, -1px -1px 7px grey;
+  background-color: rgba($color: #fff, $alpha:1) !important;
   background-blend-mode: overlay;
   backdrop-filter: blur(2px);
   position: fixed;
   width: 100vw;
+}
+
+.logo{
+  img{
+    width: 80px;
+  
+  }
 }
 
 .navbar-collapse {
