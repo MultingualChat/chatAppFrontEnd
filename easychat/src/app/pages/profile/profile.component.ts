@@ -20,6 +20,17 @@ export class ProfileComponent implements OnInit {
 
   user!: User;
 
+  avatars = [
+    'colombia.png',
+    'canada.png',
+    'india.png',
+    'girl.png',
+    'boy.png',
+    'koala.png',
+    'chameleon.png',
+    'monster.png',
+  ];
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -62,6 +73,8 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+
+  onCheckChange(event: any) {}
 
   onEdit() {
     if (this.isEditing) {

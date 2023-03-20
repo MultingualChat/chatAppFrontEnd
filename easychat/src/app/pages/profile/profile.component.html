@@ -58,6 +58,35 @@
         [ngModel]="user.avatar"
       />
     </div>
+    <div class="form-group dir-col">
+      <label class="op-s" style="width: auto; align-self: center"
+        >Choose an avatar
+        <span
+          class="op-s"
+          style="color: red"
+          *ngIf="submittedForm && profileForm.controls.avatar.errors"
+        >
+          <b>You must select an avatar!</b>
+        </span>
+      </label>
+      <div class="avatars">
+        <div *ngFor="let avatar of avatars; let i = index">
+          <input
+            type="radio"
+            [id]="i"
+            formControlName="avatar"
+            [value]="avatar"
+            (change)="onCheckChange($event)"
+          />
+          <label [for]="i"
+            ><img
+              src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
+                avatar
+              }}"
+          /></label>
+        </div>
+      </div>
+    </div>
     <div class="form-group col-lg-12 dir-row">
       <label class="op-s">Language: </label>
       <input

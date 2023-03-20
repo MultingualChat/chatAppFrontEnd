@@ -1,0 +1,90 @@
+.content-wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 2% 5%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  background-image: url(../../../assets/imgs/watermark.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba($color: #fff, $alpha: 0.4);
+  background-position-y: -68px;
+  background-blend-mode: overlay;
+}
+
+.input-bar {
+  position: absolute;
+  width: 100%;
+  height: 115px;
+  left: 0px;
+  top: 785px;
+  background: #8026d9;
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  form {
+    width: 100%;
+  }
+  .dir-row {
+    width: 100%;
+    gap: 2rem;
+  }
+  fa-icon {
+    font-size: 18px;
+    color: var(--gray);
+  }
+}
+
+button {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+button:hover {
+  background-color: var(--green);
+}
+
+.msgs-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 250px);
+  gap: 2rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  .chat-msg {
+    background-color: var(--yellow);
+    padding: 1rem;
+    width: fit-content;
+    max-width: 40vh;
+    border-radius: 20px;
+    box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  label {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 4px solid var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--purple);
+    overflow: hidden;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}

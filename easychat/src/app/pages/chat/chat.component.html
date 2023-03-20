@@ -1,1 +1,27 @@
-<p>chat works!</p>
+<section class="content-wrapper">
+  <div class="msgs-wrapper">
+    <div class="chat-msg dir-row" *ngFor="let msg of msgs">
+      {{ msg }}
+      <label
+        ><img
+          src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
+            user.avatar
+          }}"
+      /></label>
+    </div>
+  </div>
+
+  <div class="input-bar">
+    <form [formGroup]="chatForm" (ngSubmit)="onEnter(chatForm.value)">
+      <div class="dir-row">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter text here ..."
+          formControlName="msg"
+        />
+        <button type="submit"><fa-icon [icon]="sendIcon"></fa-icon></button>
+      </div>
+    </form>
+  </div>
+</section>
