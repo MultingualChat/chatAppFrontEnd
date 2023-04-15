@@ -29,6 +29,7 @@ export class ChatComponent implements OnInit {
   onEnter(data: any) {
     this.submittedChat = true;
     this.msgs.push(data.msg);
+    this.chatForm.reset();
     console.log('msg: ', this.msgs);
   }
 }

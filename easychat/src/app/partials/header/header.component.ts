@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { catchError, take, throwError } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Language } from 'src/app/models/language';
+import { ChatService } from 'src/app/services/chat.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -20,18 +23,31 @@ export class HeaderComponent implements OnInit {
   isLoading: boolean = false;
   closeResult = '';
 
+  user: any;
+  languages = Language;
+
   constructor(
     private modalService: NgbModal,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    this.user = this.userService.getDecodedAccessToken(token);
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.changeLanguage(this.user.language);
+  }
+
+  changeLanguage(lang: any) {
+    console.log('lang: ', lang);
+    this.chatService.language = lang;
   }
 
   get isAuthenticated(): boolean {

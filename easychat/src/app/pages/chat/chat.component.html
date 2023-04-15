@@ -1,13 +1,14 @@
 <section class="content-wrapper">
   <div class="msgs-wrapper">
     <div class="chat-msg dir-row" *ngFor="let msg of msgs">
-      {{ msg }}
-      <label
-        ><img
+      <p class="op-s">{{ msg }}</p>
+      <div class="img-wrapper">
+        <img
           src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
             user.avatar
           }}"
-      /></label>
+        />
+      </div>
     </div>
   </div>
 

@@ -70,9 +70,13 @@ button:hover {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    word-break: break-all;
+    p {
+      margin: 0;
+    }
   }
 
-  label {
+  .img-wrapper {
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -81,10 +85,9 @@ button:hover {
     justify-content: center;
     align-items: center;
     background-color: var(--purple);
-    overflow: hidden;
-  }
-  img {
-    width: 30px;
-    height: 30px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
