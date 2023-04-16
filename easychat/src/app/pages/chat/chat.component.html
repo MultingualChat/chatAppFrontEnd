@@ -1,14 +1,43 @@
-<section class="content-wrapper">
+<section class="content-wrapper" #scrollMe>
   <div class="msgs-wrapper">
-    <div class="chat-msg dir-row" *ngFor="let msg of msgs">
-      <p class="op-s">{{ msg }}</p>
-      <div class="img-wrapper">
-        <img
-          src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
-            user.avatar
-          }}"
-        />
+    <div *ngFor="let data of chatService.receivedMsg" style="display: contents">
+      <div
+        class="chat-msg dir-row"
+        *ngIf="data.message.user.email === user.email; else chatPeople"
+      >
+        <div class="dir-col">
+          <p class="op-s">
+            <b>{{ data.message.user.nickname }}</b>
+          </p>
+          <p class="op-s">{{ data.message.msg }}</p>
+        </div>
+        <div class="img-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
+              data.message.user.avatar
+            }}"
+          />
+        </div>
       </div>
+      <ng-template #chatPeople>
+        <div class="chat-msg c2 dir-row">
+          <div class="dir-col">
+            <p class="op-s">
+              <b>{{ data.message.user.nickname }}</b>
+            </p>
+            <p class="op-s">
+              {{ data.message.msg }}
+            </p>
+          </div>
+          <div class="img-wrapper">
+            <img
+              src="https://raw.githubusercontent.com/MultingualChat/chatAppBuild/master/assets/avatar/{{
+                data.message.user.avatar
+              }}"
+            />
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 

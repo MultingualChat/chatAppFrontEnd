@@ -42,13 +42,13 @@ export class HeaderComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.changeLanguage(this.user.language);
+    //this.changeLanguage(this.user.language);
   }
 
-  changeLanguage(lang: any) {
-    console.log('lang: ', lang);
-    this.chatService.language = lang;
-  }
+  // changeLanguage(lang: any) {
+  //   console.log('lang: ', lang);
+  //   this.chatService.language = lang;
+  // }
 
   get isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
@@ -56,6 +56,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 
   onLogin(data: any) {

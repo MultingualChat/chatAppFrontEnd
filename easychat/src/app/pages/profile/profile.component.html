@@ -1,5 +1,5 @@
 <section class="content-wrapper">
-  <div class="center dir-col" style="margin-top: 68px">
+  <div class="center dir-col" style="margin-top: 100px">
     <h1 class="op-s purple gluten"><b>Join Chat</b></h1>
     <p class="op-s">
       Join people around the world. Lorem ipsum dolor sit amet, consectetur
@@ -7,9 +7,30 @@
       magna aliqua.
     </p>
   </div>
-  <button class="btn btn-info gray" (click)="onChat()">
-    <b>Chat Room</b>
-  </button>
+  <form [formGroup]="joinForm" (ngSubmit)="onJoinRoom(joinForm.value)">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter EN to ES model URL"
+      formControlName="enToEs"
+      [ngClass]="{
+        'is-invalid': joinRoom && joinForm.controls.enToEs.errors
+      }"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter ES to EN model URL"
+      formControlName="esToEn"
+      [ngClass]="{
+        'is-invalid': joinRoom && joinForm.controls.esToEn.errors
+      }"
+    />
+    <button type="submit" class="btn btn-info gray">
+      <b>Chat Room</b>
+    </button>
+  </form>
+
   <hr />
   <div class="profile-title dir-row">
     <h1 class="op-s purple gluten"><b>Profile</b></h1>
@@ -89,15 +110,21 @@
     </div>
     <div class="form-group col-lg-12 dir-row">
       <label class="op-s">Language: </label>
-      <input
-        type="text"
+      <select
         formControlName="language"
+        class="form-control"
         [ngClass]="{
           'is-invalid': submittedForm && profileForm.controls.language.errors
         }"
-        class="form-control"
         [ngModel]="user.language"
-      />
+      >
+        <option
+          *ngFor="let language of languages | keyvalue"
+          [ngValue]="language.key"
+        >
+          {{ language.value }}
+        </option>
+      </select>
     </div>
     <button type="submit" class="btn btn-warning gray" [hidden]="!isEditing">
       <b>Update</b>

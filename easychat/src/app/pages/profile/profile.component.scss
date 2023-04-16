@@ -41,8 +41,6 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  //width: 100%;
-  //justify-content: space-around;
   min-width: 500px;
   gap: 2rem;
   label {
@@ -55,7 +53,7 @@ form {
   }
   button {
     align-self: center;
-    max-width: 100px;
+    max-width: 120px;
   }
 }
 

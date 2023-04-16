@@ -1,9 +1,13 @@
-p{
-    text-align: center;
-    padding: 0%;
-    margin: 0%;
+p {
+  text-align: center;
+  padding: 0%;
+  margin: 0%;
+  font-size: 0.8rem;
 }
-.footer{
-    background-color: aqua;
-    height: fit-content;
+.footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: aqua;
+  height: fit-content;
 }

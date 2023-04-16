@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { Language } from 'src/app/models/language';
 import { User } from 'src/app/models/user';
+import { ChatService } from 'src/app/services/chat.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,8 +17,12 @@ export class ProfileComponent implements OnInit {
   isEditing: boolean = false;
   isLoading: boolean = false;
 
+  languages = Language;
+
   submittedForm: boolean = false;
   profileForm!: FormGroup;
+  joinRoom: boolean = false;
+  joinForm!: FormGroup;
 
   user!: User;
 
@@ -34,7 +40,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private chatService: ChatService
   ) {}
 
   ngOnInit(): void {
@@ -49,9 +56,24 @@ export class ProfileComponent implements OnInit {
       avatar: [{ value: '', disabled: true }, Validators.required],
       language: [{ value: '', disabled: true }, Validators.required],
     });
+    this.joinForm = this.fb.group({
+      esToEn: ['', Validators.required],
+      enToEs: ['', Validators.required],
+    });
   }
 
-  getUser() {}
+  onJoinRoom(data: any) {
+    this.joinRoom = true;
+    if (this.joinForm.invalid) {
+      alert(
+        'Please, complete all the required fields before entering to the room.'
+      );
+      return;
+    }
+    this.chatService.enToSpUrl = data.enToEs;
+    this.chatService.spToEnUrl = data.esToEn;
+    this.router.navigateByUrl('/chat');
+  }
 
   onUpdateProfile(data: any) {
     this.submittedForm = true;
@@ -86,9 +108,5 @@ export class ProfileComponent implements OnInit {
       this.profileForm.controls['avatar'].disable();
       this.profileForm.controls['language'].disable();
     }
-  }
-
-  onChat() {
-    this.router.navigateByUrl('/chat');
   }
 }
